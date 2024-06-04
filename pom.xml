@@ -27,6 +27,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>net.openhft</groupId>
+			<artifactId>chronicle-map</artifactId>
+			<version>3.25ea5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -34,6 +40,33 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<requiresUnpack>
+						<dependency>
+							<groupId>net.openhft</groupId>
+							<artifactId>chronicle-bytes</artifactId>
+						</dependency>
+						<dependency>
+							<groupId>net.openhft</groupId>
+							<artifactId>chronicle-core</artifactId>
+						</dependency>
+						<dependency>
+							<groupId>net.openhft</groupId>
+							<artifactId>chronicle-wire</artifactId>
+						</dependency>
+						<dependency>
+							<groupId>net.openhft</groupId>
+							<artifactId>chronicle-values</artifactId>
+						</dependency>
+					</requiresUnpack>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
